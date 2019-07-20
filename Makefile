@@ -7,11 +7,16 @@ gitrev := $$(git rev-list -1 HEAD)
 TEST?=$$(go list ./... |grep -v 'vendor')
 GOFMT_FILES?=$$(find . -name '*.go' |grep -v vendor)
 
-default: tools build package
+default: tools build package e2e 
 
 tools:
 	go get -u github.com/mitchellh/gox
 	go get -u github.com/golang/dep/cmd/dep
+
+e2e:
+	go get -u github.com/NoUseFreak/cicd
+	go build -o build/${provider} cmd/${provider}/main.go
+	cd ./test/fixtures/basic && cicd -v trace run
 
 build:
 	dep ensure
