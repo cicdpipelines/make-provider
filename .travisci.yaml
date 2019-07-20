@@ -1,4 +1,0 @@
-sudo: required
-language: go
-go:
-  - master

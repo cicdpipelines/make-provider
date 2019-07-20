@@ -7,9 +7,14 @@ gitrev := $$(git rev-list -1 HEAD)
 TEST?=$$(go list ./... |grep -v 'vendor')
 GOFMT_FILES?=$$(find . -name '*.go' |grep -v vendor)
 
-default: build
+default: tools build package
+
+tools:
+	go get -u github.com/mitchellh/gox
+	go get -u github.com/golang/dep/cmd/dep
 
 build:
+	dep ensure
 	gox ${version_opts} --output="build/{{.OS}}_{{.Arch}}/${provider}" ./cmd/${provider}/
 
 package:

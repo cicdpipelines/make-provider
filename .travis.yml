@@ -1,0 +1,14 @@
+sudo: required
+language: go
+go:
+- master
+deploy:
+  provider: releases
+  api_key:
+    secure: U+yIRfpC1GoLywdMETyxBjW68vGMO4mUObENBL8obcvx/S1M0vZeR9tw/P3zMMNrz3JRAGCEzrFwb888ALmoOa8gWizjjqR98iWLnes2XjiXxcG2veIMeK9o6usZgH7KBF/7q58QG/uZCW4h/bcq1vrPCZQK1uvELKk7W/ttPGUNRpbqZ1hcjpL8HO7NFSn9O5tXNLDpZ+8TEEhkEyRm2FSe0bYnOLCPGcyAMgcm3zAJKErj6hbpIr3jv+wilOekilSUQHgJ7gHO/nR9LqOU0mxGQXRiO2XvrpLYsSFgGX+uvwz7RIyFOtCE/wjR4HcCCnEy1UgRkDRHF9mwkbtUOS726aqHvsZIYy1BBVhgQDw1MbcrmPtvXnXsxbpv6JrtVZYjfs6z4MSAU/XJC6OPx4uEwfjfwqixrcs6xrhHwDOlUT+EwT1r5Ls1nypyVD7NC7fRN18NeBGaQMB4OpaLvL6POz1lpS5JtZjvzgN8o0efxdXpo5wX+wFN/9/LWq7bmMHnq4pe8VMVZMfZAdn6kt+B1nfULJ1nInpbcdBvnXhX6WAX6yy6CQ2tTXiOrUjjySfL3IkzEneLoCcKvytggk2zn9naZzvuMsD/grmsWbMrkuRiJGAQtzn8O1OHubxngvnenrd9dVZpryTpZ4sOsSoG29fAm/pj5vKXN7BxIpY=
+  file_glob: true
+  file: build/archive/*
+  skip_cleanup: true
+  on:
+    repo: cicdpipelines/make-provider
+    tags: true
