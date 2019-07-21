@@ -4,6 +4,7 @@ import (
 	cicd "github.com/NoUseFreak/cicd/pkg/helper"
 )
 
+// Provider returns cicd configuration for make
 func Provider() *cicd.Provider {
 	return &cicd.Provider{
 		// TODO
